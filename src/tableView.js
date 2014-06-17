@@ -41,6 +41,9 @@ Handsontable.TableView = function (instance) {
   });
 
   var isMouseDown;
+  this.isMouseDown = function() {
+    return isMouseDown;
+  }
 
   $documentElement.on('mouseup.' + instance.guid, function (event) {
     if (instance.selection.isInProgress() && event.which === 1) { //is left mouse button
@@ -48,13 +51,6 @@ Handsontable.TableView = function (instance) {
     }
 
     isMouseDown = false;
-
-    if (instance.autofill.handle && instance.autofill.handle.isDragged) {
-      if (instance.autofill.handle.isDragged > 1) {
-        instance.autofill.apply();
-      }
-      instance.autofill.handle.isDragged = 0;
-    }
 
     if (Handsontable.helper.isOutsideInput(document.activeElement)) {
       instance.unlisten();
@@ -219,20 +215,13 @@ Handsontable.TableView = function (instance) {
          }*/
         instance.selection.setRangeEnd(coords);
       }
-      else if (instance.autofill.handle && instance.autofill.handle.isDragged) {
-        instance.autofill.handle.isDragged++;
-        instance.autofill.showBorder(coords);
-      }
+      
       Handsontable.hooks.run(instance, 'afterOnCellMouseOver', event, coords, TD);
       that.activeWt = that.wt;
     },
     onCellCornerMouseDown: function (event) {
-      instance.autofill.handle.isDragged = 1;
       event.preventDefault();
       Handsontable.hooks.run(instance, 'afterOnCellCornerMouseDown', event);
-    },
-    onCellCornerDblClick: function () {
-      instance.autofill.selectAdjacent();
     },
     beforeDraw: function (force) {
       that.beforeRender(force);
