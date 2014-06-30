@@ -1541,6 +1541,19 @@ Handsontable.Core = function (rootElement, userSettings) {
     return priv.settings.data[row];
   };
 
+  /***
+   *  Remove "key" property object from cell meta data corresponding to params row,col
+   * @param {Number} row
+   * @param {Number} col
+   * @param {String} key
+   */
+  this.removeCellMeta = function(row, col, key) {
+    var cellMeta = instance.getCellMeta(row, col);
+    if(cellMeta[key] != undefined){
+      delete priv.cellSettings[row][col][key];
+    }
+  };
+
   /**
    * Sets cell meta data object "key" corresponding to params row, col
    * @param {Number} row
@@ -2118,6 +2131,7 @@ DefaultSettings.prototype = {
   invalidCellClassName: 'htInvalid',
   placeholderCellClassName: 'htPlaceholder',
   readOnlyCellClassName: 'htDimmed',
+  commentedCellClassName: 'htComment',
   fragmentSelection: false,
   readOnly: false,
   type: 'text',
