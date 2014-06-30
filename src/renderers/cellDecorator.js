@@ -9,6 +9,11 @@
       TD.className = cellProperties.className;
     }
 
+    if(cellProperties.comment) {
+      console.log('comment');
+      console.log(cellProperties.comment);
+    }
+
     if (cellProperties.readOnly) {
       instance.view.wt.wtDom.addClass(TD, cellProperties.readOnlyCellClassName);
     }
