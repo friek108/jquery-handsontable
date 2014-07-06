@@ -9,14 +9,15 @@
   "version": "0.10.5",
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-replace": "~0.4.4",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-watch": "~0.4.4",
-    "grunt-contrib-jasmine": "~0.5.1",
     "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-jasmine": "~0.5.1",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-gitinfo": "~0.1.1",
+    "grunt-replace": "~0.4.4",
     "grunt-saucelabs": "~4.0.4",
-    "grunt-gitinfo": "~0.1.1"
+    "grunt-webshot": "^0.3.0"
   },
   "scripts": {
     "test": "grunt test -v"

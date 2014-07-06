@@ -288,6 +288,25 @@ module.exports = function (grunt) {
           testname: "Development test (Walkontable)"
         }
       }
+    },
+    webshot: {
+      // example
+      homepage: {
+        options: {
+          // url, file or html
+          siteType: 'url',
+          site: 'http://192.168.1.100/jquery-handsontable/src/3rdparty/walkontable/test/jasmine/SpecRunner.html?spec=WalkontableTable%20should%20use%20rowHeaders%20function%20to%20generate%20row%20headers.',
+          savePath: './tmp/shot.png',
+          windowSize: {
+            width: 1024,
+            height: 768
+          },
+          shotSize: {
+            width: 1024,
+            height: 'all'
+          }
+        }
+      }
     }
   });
 
@@ -336,4 +355,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-saucelabs');
   grunt.loadNpmTasks('grunt-gitinfo');
+  grunt.loadNpmTasks('grunt-webshot');
 };

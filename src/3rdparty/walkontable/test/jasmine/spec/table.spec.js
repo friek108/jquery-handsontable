@@ -11,11 +11,6 @@ describe('WalkontableTable', function () {
   });
 
   afterEach(function () {
-    if (!debug) {
-      $('.wtHolder').remove();
-    }
-
-    $container.remove()
   });
 
   it("should create as many rows as in `height` + maxOuts", function () {
