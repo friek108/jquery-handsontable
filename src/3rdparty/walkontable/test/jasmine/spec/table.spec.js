@@ -4,13 +4,18 @@ describe('WalkontableTable', function () {
 
   beforeEach(function () {
     $container = $('<div></div>').css({'overflow': 'auto'});
-    $container.width(100).height(200);
+    $container.width(100).height(201);
     $table = $('<table></table>'); //create a table that is not attached to document
     $container.append($table).appendTo('body');
     createDataArray();
   });
 
   afterEach(function () {
+    if (!debug) {
+      $('.wtHolder').remove();
+    }
+
+    $container.remove()
   });
 
   it("should create as many rows as in `height` + maxOuts", function () {
@@ -101,6 +106,9 @@ describe('WalkontableTable', function () {
     wt.draw();
     var height = $container[0].clientHeight;
     var potentialRowCount = Math.ceil(height / rowHeight) + wt.wtTable.getRowStrategy().maxOuts;
+   // document.write("$container[0].clientHeight "+ $container[0].clientHeight);
+   // document.write("Math.ceil(height / rowHeight) "+ Math.ceil(height / rowHeight));
+   // document.write("wt.wtTable.getRowStrategy().maxOuts "+ wt.wtTable.getRowStrategy().maxOuts);
     expect($table.find('tbody td').length).toBe(potentialRowCount * wt.wtTable.getColumnStrategy().cellCount); //displayed cells
     expect($table.find('tbody th').length).toBe(potentialRowCount); //9*1=9 displayed row headers
     expect($table.find('tbody tr:first th').length).toBe(1); //only one th per row
