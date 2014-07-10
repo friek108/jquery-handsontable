@@ -90,6 +90,11 @@ WalkontableVerticalScrollbarNative.prototype.getLastCell = function () {
 WalkontableVerticalScrollbarNative.prototype.sumCellSizes = function (from, length) {
   var sum = 0;
   while (from < length) {
+    console.log(this.instance.wtSettings.settings.rowHeight);
+    console.log(this.instance.wtSettings.settings.defaultRowHeight);
+
+    // W przypadku rendereres_html podaje defaultową wartość wysokości wiersza która nie zgadza się z wysokością wewnątrz komórki / wiersza
+
     sum += this.instance.wtSettings.settings.rowHeight(from) || this.instance.wtSettings.settings.defaultRowHeight; //TODO optimize getSetting, because this is MUCH faster then getSetting
     from++;
   }
